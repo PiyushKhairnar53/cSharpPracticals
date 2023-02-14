@@ -8,28 +8,26 @@ namespace BankApplication
 {
     internal class BankDetails
     {
-        public string? prmAddr = "", comAddr = "" ;
+        public string? permanantAddress = "", communicationAddress = "" ;
         public bool wantCreditCard,isAddrSame;
-        public int? income,crdAllowed;
-        public string? accNo = "",crdCardNo = "";
-
+        public int? income,creditAllowed;
+        public string? accountNumber = "",creditCardNumber = "";
 
         public void GetBankDetails()
         {
             GetAddress();   
-            GenerateAccNo();
+            GenerateAccountNumber();
             GetCreditDetails();
         }
 
         public void GetCreditDetails() 
         {
             Console.WriteLine("Do you want credit card (y|Y or n|N) ? : ");
-            string? cc = Console.ReadLine();
+            string? creditCard = (Console.ReadLine()).ToLower();
 
-            if (cc == "y" || cc == "Y" || cc=="Yes" || cc == "yes")
+            if (creditCard == "y" || creditCard == "yes")
             {
                 wantCreditCard = true;
-
                 if (wantCreditCard) 
                 {
                     Console.WriteLine("Please enter your annual income : ");
@@ -41,73 +39,68 @@ namespace BankApplication
                     }
                     if (income > 300000 && income <500000)
                     {
-                        crdAllowed = 50000;
-                        Console.WriteLine("You are allowed to use credit upto : "+crdAllowed);
+                        creditAllowed = 50000;
+                        Console.WriteLine("You are allowed to use credit upto : "+creditAllowed);
                     }
                     if (income > 500000 && income <700000)
                     {
-                        crdAllowed = 75000;
-                        Console.WriteLine("You are allowed to use credit upto : " + crdAllowed);
+                        creditAllowed = 75000;
+                        Console.WriteLine("You are allowed to use credit upto : " + creditAllowed);
                     }
                     if (income > 700000)
                     {
-                        crdAllowed = 100000;
-                        Console.WriteLine("You are allowed to use credit upto : " + crdAllowed);
+                        creditAllowed = 100000;
+                        Console.WriteLine("You are allowed to use credit upto : " + creditAllowed);
                     }
-
                 }
 
-                Random rnd = new();
+                Random random = new();
                 var builder = new StringBuilder();
 
                 while (builder.Length < 16)
                 {
-                    builder.Append(rnd.Next(10)).ToString();
+                    builder.Append(random.Next(10)).ToString();
                 }
-
-                crdCardNo = builder.ToString();
-
-
+                creditCardNumber = builder.ToString();
             }
-       
-
         }
 
-        public void GenerateAccNo() 
+        public void GenerateAccountNumber() 
         {
-            Random rnd = new();
+            Random random = new();
             var builder = new StringBuilder();
-
             while (builder.Length < 14) 
             {
-                builder.Append(rnd.Next(10)).ToString();
+                builder.Append(random.Next(10)).ToString();
             }
-
-            accNo = builder.ToString();
+            accountNumber = builder.ToString();
         }
 
         public void GetAddress()
         {
-           
-            Console.WriteLine("Please enter your Permanant address - ");
-            prmAddr = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Please enter your Permanant address - ");
+                permanantAddress = Console.ReadLine();
+            } while (permanantAddress!.Length == 0);
 
             Console.WriteLine("Is your permanant address and communication address same(y|Y or n|N) : ");
-            string? c = Console.ReadLine();
+            string? answer = (Console.ReadLine()).ToLower();
 
-            if (c == "y" || c == "Y" || c == "Yes" || c == "yes")
+            if (answer == "y" || answer == "yes")
             {
                 isAddrSame = true;
-                comAddr = prmAddr;
+                communicationAddress = permanantAddress;
             }
-            if (c == "n" || c == "N" || c == "No" || c == "no") 
+            if (answer == "n" || answer == "no" ) 
             {
-                isAddrSame = true;
-                Console.WriteLine("Please enter your Communication address - ");
-                comAddr = Console.ReadLine();
+                do
+                {
+                    isAddrSame = false;
+                    Console.WriteLine("Please enter your Communication address - ");
+                    communicationAddress = Console.ReadLine();
+                } while (communicationAddress!.Length == 0);
             }
-
         }
-
     }
 }

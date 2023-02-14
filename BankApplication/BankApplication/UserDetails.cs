@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace BankApplication
 {
     internal class UserDetails
     {
-        public string? fName, lName, email, contNo, dOB, gender, spouseName, marStatus;
+        public string? firstName, lastName, email, contactNumber, dateOfBirth, gender, spouseName, maritualStatus;
         public bool haveSpouse, haveChilds;
-        public int? noOfChilds,userId=0;
+        public int? numberOfChilds,userId=0;
         public List<String>? childNames;
 
         public UserDetails()
         {
-
-            Random rnd = new();
-            userId = rnd.Next(10000,999999);    
-
+            Random random = new();
+            userId = random.Next(10000,999999);    
         }
 
         public void GetDetails() {
@@ -27,25 +20,27 @@ namespace BankApplication
             do
             {
                 Console.WriteLine("First name - ");
-                fName = Console.ReadLine();
-            } while (fName!.Length == 0);
+                firstName = Console.ReadLine();
+            } while (firstName!.Length == 0);
 
             do
             {
                 Console.WriteLine("Last name - ");
-                lName = Console.ReadLine();
-            } while (lName!.Length == 0);
+                lastName = Console.ReadLine();
+            } while (lastName!.Length == 0);
 
             GetEmail();
-            GetContact();
-
-            Console.WriteLine("Enter your Date of Birth (DD/MM/YYYY) : ");
-            dOB = Console.ReadLine();
-
+            GetContact(); 
             GetGender();
             GetMaritualStatus();
+        }
 
+        public void GetDateOfBirth() 
+        {
+            Console.WriteLine("Enter your Date of Birth (DD/MM/YYYY) : ");
+            string? dateOfBirth = Console.ReadLine();
 
+            DateTime enteredDate = DateTime.Parse(dateOfBirth!);
         }
 
         public void GetEmail() {
@@ -59,41 +54,40 @@ namespace BankApplication
                 valid = isEmail ? "true" : "false";
 
             } while (valid == "false");
-
         }
 
         public void GetContact() {
 
-            string valid ;
+            string valid;
             do
             {
-
                 Console.WriteLine("Please enter a valid Contact No : ");
-                contNo = Console.ReadLine();
-
-                bool isContNo = Regex.IsMatch(contNo!, @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", RegexOptions.IgnoreCase);
-                valid = isContNo ? "true" : "false";
+                contactNumber = Console.ReadLine();
+                bool iscontactNumber = Regex.IsMatch(contactNumber!, @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", RegexOptions.IgnoreCase);
+                valid = iscontactNumber ? "true" : "false";
 
             } while (valid == "false");
-
         }
 
         public void GetGender() {
 
-            Console.WriteLine("Enter gender (M/m or F/f): ");
-            char? g = Convert.ToChar(Console.ReadLine()!);
-            if (g == 'm' || g == 'M')
+            bool valid = false;
+            string? genderAnswer;
+            do
             {
-
-                gender = "male";
-
-            }
-
-            if (g == 'f' || g == 'F')
-            {
-                gender = "female";
-            }
-
+                Console.WriteLine("Enter gender (M/m or F/f): ");
+                genderAnswer = (Console.ReadLine()).ToLower();
+                if (genderAnswer == "m"|| genderAnswer == "male")
+                {
+                    gender = "male";
+                    valid = true;
+                }
+                if (genderAnswer == "f" || genderAnswer == "female")
+                {
+                    gender = "female";
+                    valid = true;   
+                }
+            } while(valid == false);
         }
 
         public void GetMaritualStatus() {
@@ -104,45 +98,31 @@ namespace BankApplication
             if (m == "y" || m == "Y" || m == "Yes" || m == "yes")
             {
 
-                marStatus = "married";
+                maritualStatus = "married";
                 haveSpouse = true;
 
                 Console.WriteLine("Please enter your spouse name - ");
                 spouseName = Console.ReadLine();
 
                 Console.WriteLine("Do you have childrens (y/Y or n/N) : ");
-                string? c = Console.ReadLine();
-
-
-                if (c == "y" || c == "Y" || c == "Yes" || c == "yes")
+                string? childrensAnswer = (Console.ReadLine()).ToLower();
+                if (childrensAnswer == "y" || childrensAnswer == "yes")
                 {
                     haveChilds = true;
                     Console.WriteLine("Total no of childrens you have : ");
-                    noOfChilds = Convert.ToInt32(Console.ReadLine());
-
-                    childNames = new List<string>((int)noOfChilds);
-
-                    for (int? i = 0; i < noOfChilds; i++)
+                    numberOfChilds = Convert.ToInt32(Console.ReadLine());
+                    childNames = new List<string>((int)numberOfChilds);
+                    for (int? i = 0; i < numberOfChilds; i++)
                     {
-
                         Console.WriteLine($"Enter Name of Child {i+1} : ");
                         childNames.Add(Console.ReadLine()!);
-                    
                     }
-
                 }
-
-
-            }
-
-            if (m == "n" || m == "N" || m == "No" || m == "no")
+            }else 
             {
-                marStatus = "unmarried";
+                maritualStatus = "unmarried";
                 haveSpouse = false;
             }
-
         }
-
-
     }
 }
