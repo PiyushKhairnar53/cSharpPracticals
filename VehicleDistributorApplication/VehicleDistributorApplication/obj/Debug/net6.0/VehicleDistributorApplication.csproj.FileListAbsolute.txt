@@ -1,0 +1,15 @@
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\bin\Debug\net6.0\VehicleDistributorApplication.exe
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\bin\Debug\net6.0\VehicleDistributorApplication.deps.json
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\bin\Debug\net6.0\VehicleDistributorApplication.runtimeconfig.json
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\bin\Debug\net6.0\VehicleDistributorApplication.dll
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\bin\Debug\net6.0\VehicleDistributorApplication.pdb
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.csproj.AssemblyReference.cache
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.AssemblyInfoInputs.cache
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.AssemblyInfo.cs
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.csproj.CoreCompileInputs.cache
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.dll
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\refint\VehicleDistributorApplication.dll
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.pdb
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\VehicleDistributorApplication.genruntimeconfig.cache
+C:\Users\Icon\source\repos\VehicleDistributorApplication\VehicleDistributorApplication\obj\Debug\net6.0\ref\VehicleDistributorApplication.dll
