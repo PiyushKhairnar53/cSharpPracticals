@@ -1,0 +1,15 @@
+C:\Users\Icon\source\repos\StringApplication\StringApplication\bin\Debug\net6.0\StringApplication.exe
+C:\Users\Icon\source\repos\StringApplication\StringApplication\bin\Debug\net6.0\StringApplication.deps.json
+C:\Users\Icon\source\repos\StringApplication\StringApplication\bin\Debug\net6.0\StringApplication.runtimeconfig.json
+C:\Users\Icon\source\repos\StringApplication\StringApplication\bin\Debug\net6.0\StringApplication.dll
+C:\Users\Icon\source\repos\StringApplication\StringApplication\bin\Debug\net6.0\StringApplication.pdb
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.csproj.AssemblyReference.cache
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.AssemblyInfoInputs.cache
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.AssemblyInfo.cs
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.csproj.CoreCompileInputs.cache
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.dll
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\refint\StringApplication.dll
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.pdb
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\StringApplication.genruntimeconfig.cache
+C:\Users\Icon\source\repos\StringApplication\StringApplication\obj\Debug\net6.0\ref\StringApplication.dll
