@@ -1,40 +1,49 @@
 ﻿
 namespace BankApplication
 {
+    public class InvalidAmountException : Exception
+    {
+        public InvalidAmountException(string message)
+        {
+            Console.WriteLine("\n" + message);
+        }
+    }
+
     internal class BankOperations:BankDetails
     {
         public int totalAccountBalance = 0;
         int depositAmount;
         int withdrawAmount;
 
-        public class InvalidAmountException : Exception
-        {
-            public InvalidAmountException(string message) 
-            {
-                Console.WriteLine("\n"+message);
-            }
-        }
-
         public void UpdateBalacne() 
         {
-            string? input;
             Console.WriteLine("\nDo you want to deposit amount(y/yes or n/no) : ");
-            input = Console.ReadLine();
-            input.ToLower();
+            string? input;
+            input = Console.ReadLine().ToLower();
 
-            if (input == "y" || input == "yes") 
+            do
             {
-                DepositAmount();
-            }
+                if (input == "y" || input == "yes")
+                {
+                    DepositAmount();
+                }
 
-            Console.WriteLine("Do you want to withdraw amount(y/yes or n/no) : ");
-            input = Console.ReadLine();
-            input!.ToLower();
+                if (totalAccountBalance > 0)
+                {
+                    Console.WriteLine("Do you want to withdraw amount(y/yes or n/no) : ");
+                    input = Console.ReadLine();
+                    input!.ToLower();
 
-            if (input == "y" || input == "yes")
-            {
-                WithdrawAmount();
-            }
+                    if (input == "y" || input == "yes")
+                    {
+                        WithdrawAmount();
+                    }
+                }
+
+                Console.WriteLine("Do you want to deposit again (y/yes or n/no) : ");
+                input = Console.ReadLine().ToLower();
+
+            } while (input == "y" || input == "yes");
         }
 
         public void DepositAmount() 
@@ -57,26 +66,26 @@ namespace BankApplication
                     else
                     {
                         validAmount = false;
-                        if (depositAmount == 0)
+                        if (depositAmount < 0)
                         {
-                            throw new InvalidAmountException("\nDeposit Amount should be greater than 0");
+                            throw new InvalidAmountException("Deposit Amount should be greater than 0");
                         }
                         else if (depositAmount > 100000)
                         {
-                            throw new InvalidAmountException("\nDeposit Amount should be less than 100000");
+                            throw new InvalidAmountException("Deposit Amount should be less than 100000");
                         }
                         else
-                            throw new InvalidAmountException("\nDeposit Amount you have entered is invalid..");
+                            throw new InvalidAmountException("Deposit Amount you have entered is invalid..");
 
                     }
                 }
                 catch (InvalidAmountException exception)
                 {
-                    Console.WriteLine(exception);
+                    Console.WriteLine(exception.Message);
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception);
+                    Console.WriteLine(exception.Message);
                 }
                 finally 
                 {
@@ -112,26 +121,25 @@ namespace BankApplication
                     else
                     {
                         validAmount = false;
-
-                        if (withdrawAmount == 0)
+                        if (withdrawAmount < 0)
                         {
-                            throw new InvalidAmountException("\nWithdraw Amount should be greater than 0");
+                            throw new InvalidAmountException("Withdraw Amount should be greater than 0");
                         }
                         else if (withdrawAmount > 50000)
                         {
-                            throw new InvalidAmountException("\nDaily withdraw limit is 50000");
+                            throw new InvalidAmountException("Daily withdraw limit is 50000");
                         }
                         else
-                            throw new InvalidAmountException("\nThe amount you want to withdraw is invalid");
+                            throw new InvalidAmountException("The amount you want to withdraw is invalid");
                     }
                 }
                 catch (InvalidAmountException exception)
                 {
-                    Console.WriteLine(exception);
+                    Console.WriteLine(exception.Message);
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception);
+                    Console.WriteLine(exception.Message);
                 }
                 finally
                 {
