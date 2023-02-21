@@ -1,27 +1,29 @@
-﻿// See https://aka.ms/new-console-template for more information
-using System.Text;
+﻿using System.Text;
 
 namespace BankApplication
 {
     public class Bank 
     {
         static UserDetails? userDetails;
-        static BankDetails? bankDetails ;
+        static BankOperations? bankDetails ;
         public static void Main(string[] args)
         {
             string? newUser;
             do
             {
                 userDetails = new UserDetails();
-                bankDetails = new BankDetails();
+                bankDetails = new BankOperations();
                 Console.WriteLine("Welcome to ABC Bank \nFor creating new Bank Account please enter following details ");
                 userDetails.GetDetails();
                 bankDetails.GetBankDetails();
 
                 ShowUserDetails();
                 ShowBankDetails();
+
+
                 Console.WriteLine("Do you want to create new user (y/Y or n/N) : ");
-                newUser = (Console.ReadLine()).ToLower();
+                newUser = Console.ReadLine();
+                newUser!.ToLower();
 
             } while (newUser == "y" || newUser == "yes");
         }
@@ -38,7 +40,6 @@ namespace BankApplication
             Console.WriteLine("Last Name : "+userDetails.lastName);
             Console.WriteLine("Email id : "+userDetails.email);
             Console.WriteLine("Contact number : "+userDetails.contactNumber);
-            Console.WriteLine("Date of birth : "+userDetails.dateOfBirth);
             Console.WriteLine("Gender : "+userDetails.gender);
             Console.WriteLine("Maritual status : "+userDetails.maritualStatus);
             if (userDetails.maritualStatus == "married")
@@ -80,6 +81,8 @@ namespace BankApplication
                 string crdNo = sb.ToString(); 
                 Console.WriteLine("Credit card number : " + crdNo);
             }
+
+            bankDetails.UpdateBalacne();
         }
 
     }

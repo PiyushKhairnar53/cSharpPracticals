@@ -4,7 +4,7 @@ namespace BankApplication
 {
     internal class UserDetails
     {
-        public string? firstName, lastName, email, contactNumber, dateOfBirth, gender, spouseName, maritualStatus;
+        public string? firstName, lastName, email, contactNumber, gender, spouseName, maritualStatus;
         public bool haveSpouse, haveChilds;
         public int? numberOfChilds,userId=0;
         public List<String>? childNames;
