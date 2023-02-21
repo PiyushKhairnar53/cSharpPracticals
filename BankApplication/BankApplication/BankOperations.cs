@@ -40,8 +40,12 @@ namespace BankApplication
                     }
                 }
 
-                Console.WriteLine("Do you want to deposit again (y/yes or n/no) : ");
-                input = Console.ReadLine().ToLower();
+                if (input == "y" || input == "yes")
+                {
+
+                    Console.WriteLine("Do you want to deposit again (y/yes or n/no) : ");
+                    input = Console.ReadLine().ToLower();
+                }
 
             } while (input == "y" || input == "yes");
         }
