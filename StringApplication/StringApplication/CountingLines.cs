@@ -4,129 +4,82 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StringApplication
+namespace StringFunctionApplication
 {
-    internal class StringFuctions 
+    internal class StringFuctions
     {
         string? enterString;
 
-        public void CountLines() 
+        public void CountLines()
         {
 
             Console.WriteLine("Counting lines \nPlease enter input : ");
             enterString = Console.ReadLine();
             enterString!.ToLower();
 
+            string[] wordsArr = enterString!.Split(" ");
+
             int count = 0;
-
-            for (int i = 0; i < enterString!.Length; i++)
+            foreach (string str in wordsArr) 
             {
-                if (i == enterString.Length - 1)
-                {
-                    if (enterString[i] == '.' || enterString[i] == '?' || enterString[i] == '!')
-                    {
-                        count++;
-                    }
-                }
-
-                else if (enterString[i] == '.' && enterString[i + 1] == ' ')
+                char lastCharacter = str[str.Length - 1];
+                if (lastCharacter == '.' || lastCharacter == '?' || lastCharacter == '!') 
                 {
                     count++;
                 }
 
-                else if (enterString[i] == '?' && enterString[i + 1] == ' ')
-                {
-                    count++;
-                }
-
-                else if (enterString[i] == '!' && enterString[i + 1] == ' ')
-                {
-                    count++;
-                }
             }
+
             Console.WriteLine("\nNumber of new lines:" + count);
         }
 
         public void ReverseWords()
         {
 
-            Console.WriteLine("Reverse of words in Line \n Please enter : ");
+            Console.WriteLine("Reverse of words in Line \nPlease enter : ");
             enterString = Console.ReadLine();
             enterString.ToLower();
 
-            string[] wordsArr = enterString.Split(" ");
-            for (int i = 0; i < wordsArr.Length; i++)
-            {
-                string reversedWords = "";
-                for (int j = wordsArr[i].Length - 1; j >= 0; j--)
-                {
-                    reversedWords = reversedWords + wordsArr[i][j];
-                }
+            string result = string.Join(" ", enterString
+            .Split(' ')
+            .Select(x => new String(x.Reverse().ToArray())));
+            Console.WriteLine(result);
 
-                Console.WriteLine(reversedWords + " ");
-
-            }
         }
 
-        public void RemoveDuplicates() 
+        public void RemoveDuplicates()
         {
             Console.WriteLine("Remove duplicates \nPlease enter : ");
-            
+
             enterString = Console.ReadLine();
             enterString.ToLower();
 
-            string answer = "";
-            for (int i = 0; i < enterString.Length; i++)
-            {
-                if (!answer.Contains(enterString[i]) || (enterString[i] == ' '))
-                {
-                    answer += enterString[i];
-                }
-            }
-            answer = answer.Replace("  ", " ");
-            Console.WriteLine("String After Removing Duplicate Characters: " + answer);
+            var uniqueCharArray = enterString.ToCharArray().Distinct().ToArray();
+            var resultString = new string(uniqueCharArray);
+            Console.WriteLine("String After Removing Duplicate Characters: " + resultString);
         }
 
         public void LongestCommonPrefix()
         {
             Console.WriteLine("Longest Common Prefix \nPlease enter input : ");
-            
             enterString = Console.ReadLine();
-            string[] wordsArr = enterString.Split(" ");
+            string[] wordsArr = enterString!.Split(" ");
 
-            List<string> repeatedPrefixes = new List<string>();
-            for (int i = 0; i < wordsArr.Count(); i++)
+            var longestCommonPrefix = Enumerable.Range(1, wordsArr.Max(_ => _)!.Length)
+            .Select(i =>
             {
-                for (int j = i + 1; j < wordsArr.Count(); j++)
-                {
-                    int sizeOfSmallerWord = wordsArr[i].Length < wordsArr[j].Length ? wordsArr[i].Length : wordsArr[j].Length;
-                    string prefix = "";
-                    for (int k = 0; k < sizeOfSmallerWord; k++)
-                    {
-                        if (wordsArr[i][k] == wordsArr[j][k])
-                        {
-                            prefix += wordsArr[i][k];
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    repeatedPrefixes.Add(prefix);
-                }
-            }
-          
-            string longestCommonPrefix = "";
-            foreach (var s in repeatedPrefixes)
-            {
-                if (longestCommonPrefix.Length < s.Length)
-                {
-                    longestCommonPrefix = s;
-                }
-            }
-            Console.WriteLine("\n\nLongest Common Prefix is: " + longestCommonPrefix);
+                var grouped = wordsArr.Where(x => x.Length >= i)
+                    .GroupBy(x => x[..i])
+                    .Where(x => x.Count() > 1)
+                    .OrderByDescending(x => x.Count())
+                    .Select(x => new { LongestCommonPrefix = x.Key })
+                    .FirstOrDefault();
 
+                return grouped?.LongestCommonPrefix ?? string.Empty;
+            }).Max();
 
+            Console.WriteLine("Longest common prefix : " + longestCommonPrefix);
         }
     }
+
 }

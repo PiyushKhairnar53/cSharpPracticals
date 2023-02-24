@@ -1,16 +1,17 @@
 ﻿
-namespace StringApplication
+namespace StringFunctionApplication
 {
     public class StringClass
     {
         public static void Main(string[] args)
         {
-       
+            
             StringFuctions stringFunctions = new StringFuctions();
+            stringFunctions.CountLines();
+            stringFunctions.LongestCommonPrefix();
             stringFunctions.RemoveDuplicates();
             stringFunctions.ReverseWords();
-            stringFunctions.LongestCommonPrefix();
-            stringFunctions.CountLines();
+
 
             StringMethodsClass stringMethodsClass = new StringMethodsClass();
             stringMethodsClass.StringMethods();
