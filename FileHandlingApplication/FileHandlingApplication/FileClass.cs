@@ -13,7 +13,7 @@ namespace FileApplication
 
         public void SelectFiles()
         {
-            string directoryPath = @"D:\Files\";
+            string directoryPath = @"D:\";
             DirectoryInfo place = new DirectoryInfo(directoryPath);
             FileInfo[] Files = place.GetFiles();
 
@@ -23,7 +23,7 @@ namespace FileApplication
 
                 foreach (FileInfo i in Files)
                 {
-                    Console.WriteLine(@"File Name - D:\Files\" + i.Name);
+                    Console.WriteLine(@"File Name - D:\" + i.Name);
                 }
 
                 Console.WriteLine("Please Enter filename with directory or Drag and Drop a file to the console window : ");
@@ -42,13 +42,13 @@ namespace FileApplication
                         ShowFile();
                     }
 
-                    if (fileExt.Equals(".png") || fileExt.Equals(".jpg") || fileExt.Equals(".jpeg"))
+                    else if (fileExt.Equals(".png") || fileExt.Equals(".jpg") || fileExt.Equals(".jpeg"))
                     {
 
                         Console.WriteLine("You have choosed an image it cannot be updated...");
 
                     }
-                    if (fileExt!.Equals(".xlsx"))
+                    else if (fileExt!.Equals(".xlsx"))
                     {
                         Console.WriteLine("Excel file");
 
@@ -63,6 +63,11 @@ namespace FileApplication
                         }
 
                     }
+                    else 
+                    {
+                        Console.WriteLine("This file is not supported");
+                    }
+                    
                 }
                 else
                 {
@@ -70,7 +75,7 @@ namespace FileApplication
                 }
 
 
-                Console.WriteLine("Do you want to See files again(y/yes or n/no)");
+                Console.WriteLine("\nDo you want to See files again(y/yes or n/no)");
                 wantToShowAgain = Console.ReadLine().ToLower();
             } while (wantToShowAgain == "y" || wantToShowAgain == "yes");
         }
