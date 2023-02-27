@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StringFunctionApplication
+namespace StringApplication
 {
     internal class StringMethodsClass
     {
 
-        public void StringMethods()
+        public void StringMethods() 
         {
-            string? inputString1, input;
-            string? inputString3;
+            string? inputString1,input;
             int inputNumber;
 
             do
@@ -20,9 +19,9 @@ namespace StringFunctionApplication
                 Console.WriteLine("String Methods\nPlease enter input : ");
                 inputString1 = Console.ReadLine();
 
-                Console.WriteLine("1.Upper\n2.Lower\n3.Length\n4.Replace\n5.SubString\n6.Split\n7.Trim\n8.Concat\n9.Contains\n10.Exit");
-
-                Console.WriteLine("Please enter method number or name : ");
+                Console.WriteLine("1.Upper\n2.Lower\n3.Length\n4.Replace\n5.SubString\n6.Split\n7.Trim\n8.Exit");
+                
+                Console.WriteLine("Please enter method number : ");
                 input = Console.ReadLine();
                 bool inputIsNumber = Int32.TryParse(input, out inputNumber);
                 if (inputIsNumber && inputNumber > 0)
@@ -34,7 +33,7 @@ namespace StringFunctionApplication
                 {
                     case "1":
                     case "upper":
-                        Console.WriteLine($"Uppercase: {inputString1!.ToUpper()}");
+                        Console.WriteLine($"Uppercase: {inputString1.ToUpper()}");
                         break;
 
 
@@ -52,8 +51,8 @@ namespace StringFunctionApplication
                     case "replace":
                         Console.WriteLine(inputString1);
                         Console.Write("Enter a replacement string: ");
-                        inputString3 = Console.ReadLine();
-                        Console.WriteLine($"Replace(\"{inputString1}\", \"{inputString3}\"): {input.Replace(inputString1, inputString3)}");
+                        string inputString2 = Console.ReadLine();
+                        Console.WriteLine($"Replace(\"{inputString1}\", \"{inputString2}\"): {input.Replace(inputString1, inputString2)}");
                         break;
 
                     case "5":
@@ -64,8 +63,8 @@ namespace StringFunctionApplication
                         int length = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine($"SubString({index}, {length}) : {input.Substring(index, length)}");
                         break;
-
-                    case "6":
+                    
+                    case "6":   
                     case "split":
                         Console.Write("Enter delimiter: ");
                         string? delimiterString = Console.ReadLine();
@@ -85,20 +84,6 @@ namespace StringFunctionApplication
                         break;
 
                     case "8":
-                    case "concat":
-                        Console.WriteLine("Please enter string to concat");
-                        inputString3 = Console.ReadLine();
-                        Console.WriteLine("Concat : " + string.Concat(inputString1, inputString3));
-                        break;
-
-                    case "9":
-                    case "contains":
-                        Console.WriteLine("Please enter string to concat");
-                        inputString3 = Console.ReadLine();
-                        Console.WriteLine("Contains - " + inputString1!.Contains(inputString3!));
-                        break;
-
-                    case "10":
                     case "exit":
                         return;
 
@@ -108,10 +93,9 @@ namespace StringFunctionApplication
                 }
 
 
-            } while (inputString1!.Length > 0);
-
+            } while (inputString1!.Length>0);
+            
         }
 
     }
-
 }
