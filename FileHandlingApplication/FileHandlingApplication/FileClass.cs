@@ -1,6 +1,12 @@
 ﻿using System.Data;
+using System.Diagnostics;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using ClosedXML.Excel;
+using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
+using Excel = Microsoft.Office.Interop.Excel;
+using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace FileApplication
 {
@@ -53,16 +59,25 @@ namespace FileApplication
                         Console.WriteLine("Excel file");
 
                         DataTable dt = GetExcelDataTable(filePath!);
-                        Console.WriteLine();
+
+                        foreach (DataColumn dataColumn in dt.Columns) 
+                        {
+                            Console.Write(dataColumn.ToString() + "\t ");
+
+                        }
+
+                        Console.WriteLine();    
+
                         foreach (DataRow dataRow in dt.Rows)
                         {
                             foreach (var item in dataRow.ItemArray)
                             {
-                                Console.WriteLine(item);
+                                Console.Write(item+"\t ");
                             }
+                            Console.WriteLine();
                         }
 
-                    }
+                                            }
                     else 
                     {
                         Console.WriteLine("This file is not supported");
@@ -138,6 +153,7 @@ namespace FileApplication
                                 i++;
                             }
                         }
+
                     }
                 }
             }
