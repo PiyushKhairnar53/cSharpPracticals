@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace FileApplication
 {
     internal class FileOperations
@@ -11,6 +6,7 @@ namespace FileApplication
         FileInfo[] Files;
         string? filePath;
         string? directoryPath, newFilePath;
+        bool dirNotFound = false;
 
         public void CreateNewFile()
         {
@@ -21,38 +17,43 @@ namespace FileApplication
                 Console.WriteLine("Selecting location.... ");
                 GetDirectory();
 
-                Console.WriteLine("Please enter name of file you want to create : ");
-                string? inputFileName = Console.ReadLine();
-
-                if (File.Exists(inputFileName))
+                if (dirNotFound == false)
                 {
-                    Console.WriteLine("File already exists");
-                    isFileNameValid = false;
-                }
-                else
-                {
-                    GetFile();
-                    newFilePath = directoryPath + inputFileName + ".txt";
 
-                    try
+                    Console.WriteLine("Please enter name of file you want to create : ");
+                    string? inputFileName = Console.ReadLine();
+
+                    if (File.Exists(inputFileName))
                     {
-                        File.Copy(filePath!, newFilePath);
-                        ReplaceWord();
-
-                        var lastLine = File.ReadLines(newFilePath).Last();
-                        Console.WriteLine("\nLast line of " + newFilePath + " :");
-                        Console.WriteLine(lastLine);
-
-                        isFileNameValid = true;
+                        Console.WriteLine("File already exists");
+                        isFileNameValid = false;
                     }
-                    catch (UnauthorizedAccessException unAuthException) 
-                    { 
-                        Console.WriteLine(unAuthException.Message); 
-                    }
-                    catch (Exception excption) { 
-                        Console.WriteLine(excption.Message); 
-                    }
+                    else
+                    {
+                        GetFile();
+                        newFilePath = directoryPath + inputFileName + ".txt";
 
+                        try
+                        {
+                            File.Copy(filePath!, newFilePath);
+                            ReplaceWord();
+
+                            var lastLine = File.ReadLines(newFilePath).Last();
+                            Console.WriteLine("\nLast line of " + newFilePath + " :");
+                            Console.WriteLine(lastLine);
+
+                            isFileNameValid = true;
+                        }
+                        catch (UnauthorizedAccessException unAuthException)
+                        {
+                            Console.WriteLine(unAuthException.Message);
+                        }
+                        catch (Exception excption)
+                        {
+                            Console.WriteLine(excption.Message);
+                        }
+
+                    }
                 }
 
             } while (isFileNameValid == false);
@@ -101,6 +102,7 @@ namespace FileApplication
             catch (DirectoryNotFoundException dirException)
             {
                 Console.WriteLine("Directory not found: " + dirException.Message);
+                dirNotFound = true;
             }
         }
 
