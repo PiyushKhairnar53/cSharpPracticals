@@ -1,0 +1,15 @@
+C:\Users\Icon\source\repos\FileApplication\FileApplication\bin\Debug\net6.0\FileApplication.exe
+C:\Users\Icon\source\repos\FileApplication\FileApplication\bin\Debug\net6.0\FileApplication.deps.json
+C:\Users\Icon\source\repos\FileApplication\FileApplication\bin\Debug\net6.0\FileApplication.runtimeconfig.json
+C:\Users\Icon\source\repos\FileApplication\FileApplication\bin\Debug\net6.0\FileApplication.dll
+C:\Users\Icon\source\repos\FileApplication\FileApplication\bin\Debug\net6.0\FileApplication.pdb
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.csproj.AssemblyReference.cache
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.AssemblyInfoInputs.cache
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.AssemblyInfo.cs
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.csproj.CoreCompileInputs.cache
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.dll
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\refint\FileApplication.dll
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.pdb
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\FileApplication.genruntimeconfig.cache
+C:\Users\Icon\source\repos\FileApplication\FileApplication\obj\Debug\net6.0\ref\FileApplication.dll
