@@ -4,7 +4,7 @@ namespace FileApplication
     internal class FileOperations
     {
         FileInfo[] Files;
-        string? filePath;
+        string? filePath, fileExt;
         string? directoryPath, newFilePath;
         bool dirNotFound = false;
 
@@ -31,28 +31,34 @@ namespace FileApplication
                     else
                     {
                         GetFile();
-                        newFilePath = directoryPath + inputFileName + ".txt";
-
-                        try
+                        if (fileExt.Equals(".txt"))
                         {
-                            File.Copy(filePath!, newFilePath);
-                            ReplaceWord();
+                            newFilePath = directoryPath + inputFileName + ".txt";
 
-                            var lastLine = File.ReadLines(newFilePath).Last();
-                            Console.WriteLine("\nLast line of " + newFilePath + " :");
-                            Console.WriteLine(lastLine);
+                            try
+                            {
+                                File.Copy(filePath!, newFilePath);
+                                ReplaceWord();
 
-                            isFileNameValid = true;
+                                var lastLine = File.ReadLines(newFilePath).Last();
+                                Console.WriteLine("\nLast line of " + newFilePath + " :");
+                                Console.WriteLine(lastLine);
+
+                                isFileNameValid = true;
+                            }
+                            catch (UnauthorizedAccessException unAuthException)
+                            {
+                                Console.WriteLine(unAuthException.Message);
+                            }
+                            catch (Exception excption)
+                            {
+                                Console.WriteLine(excption.Message);
+                            }
                         }
-                        catch (UnauthorizedAccessException unAuthException)
+                        else 
                         {
-                            Console.WriteLine(unAuthException.Message);
+                            Console.WriteLine("You entered wrong file");
                         }
-                        catch (Exception excption)
-                        {
-                            Console.WriteLine(excption.Message);
-                        }
-
                     }
                 }
 
@@ -112,11 +118,13 @@ namespace FileApplication
             {
                 Console.WriteLine("Please Enter filename or Drag and Drop a file to copy at new file : ");
                 filePath = Console.ReadLine();
+                fileExt = System.IO.Path.GetExtension(filePath);
 
-                if (File.Exists(filePath))
-                {
-                    File.ReadAllLines(filePath);
+                if (File.Exists(filePath)) 
+                {    
+                    File.ReadAllLines(filePath);               
                 }
+
             }
             catch (FileNotFoundException fileException)
             {
